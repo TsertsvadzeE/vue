@@ -9,19 +9,23 @@ export default{
       data: [
         {
           id: 1,
-          title: "Home"
+          title: "Home",
+          url: "http://google.com"
         },
         {
           id: 2,
-          title: "TOS"
+          title: "TOS",
+          url: "http://google.com"
         },
         {
           id: 3,
-          title: "About Us"
+          title: "About Us",
+          url: "http://google.com"
         },
         {
           id: 4,
-          title: "Contact"
+          title: "Contact",
+          url: "http://google.com"
         },
       ]
     }
