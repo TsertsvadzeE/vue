@@ -5,15 +5,13 @@ export default{
     },
     data(){
         return{
-           show: true 
+           description: ""
         }
     },
     methods: {
         eventHandler: function(e){
             console.log(e.target.innerHTML, e.target.getAttribute('href'))
-        },
-        showHendler: function(){
-            this.$data.show =! this.$data.show
+            this.description = e.target.getAttribute('des')
         }
     },
 }
@@ -21,15 +19,11 @@ export default{
 <template>
     <ul>
         <li v-for="item in menuItems" :key="item.id">
-            <a :href="item.url" @click.prevent="eventHandler">{{ item.title }}</a>
+            <a :href="item.url" :des="item.description" @click.prevent="eventHandler">{{ item.title }}</a>
         </li>
     </ul>
     <br />
-    <button @click.prevent="showHendler">
-        <span v-if="show">Hide</span>
-        <span v-if="!show">Show</span>
-    </button>
-    <p v-if="show">Paragraph</p>
+    <div>{{ description }}</div>
 </template>
 <style scoped>
 ul {
