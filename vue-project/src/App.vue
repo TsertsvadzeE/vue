@@ -1,41 +1,49 @@
 <script>
-import listMenu from './listMenu.vue';
-export default{
-  components:{
-    listMenu
-  },
-  data(){
+
+export default {
+  data() {
     return{
-      data: [
-        {
-          id: 1,
-          title: "Home",
-          url: "http://google.com",
-          description: "Some Big Description 1"
-        },
-        {
-          id: 2,
-          title: "TOS",
-          url: "http://google.com",
-          description: "Some Big Description 2"
-        },
-        {
-          id: 3,
-          title: "About Us",
-          url: "http://google.com",
-          description: "Some Big Description 3"
-        },
-        {
-          id: 4,
-          title: "Contact",
-          url: "http://google.com",
-          description: "Some Big Description 4"
-        },
-      ]
+      length: null,
+      width: null,
+      height:null,
+      color: null,
+      show: false
+    }
+  },
+  computed: {
+    calculateSpace(){
+      return this.width * this.height
+    },
+    calculateMoculoba(){
+      return this.calculateSpace * this.length
     }
   }
 }
 </script>
+
 <template>
-  <listMenu :menuItems="data"/>
+  <div>
+    <form>
+      <label>Length</label><br>
+      <input v-model="length"/><br/>
+
+      <label>Width</label><br>
+      <input v-model="width"/><br/>
+
+      <label>Height</label><br>
+      <input v-model="height"/><br/>
+
+      <input type="color" v-model="color"/><br/>
+    </form>
+    <br>
+    <button @click.prevent="show = ! show">
+      <span v-if="!show">Show</span>
+      <span v-if="show">Hide</span>
+    </button>
+    <p v-if="show">ფართობი: {{calculateSpace }}</p>
+    <p v-if="show">მოცულობა: {{ calculateMoculoba}}</p>
+  </div>
+  <br>
+  <div :style="{height: height + 'px', width: width + 'px', border: '1px solid black', backgroundColor:color }">
+  </div>
 </template>
